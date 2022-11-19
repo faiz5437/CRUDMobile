@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gambar1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gambar1"
+        android:backgroundTintMode="add"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        tools:context=".CreateBiodata">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/Vnomor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="129dp"
+            android:text="NIM"
+            android:textColor="#000000"
+            android:textColorHighlight="#3F51B5"
+            android:textColorLink="#2196F3" />
+
+        <EditText
+            android:id="@+id/nomor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Vnomor"
+            android:layout_alignLeft="@+id/Vnomor"
+            android:inputType="number"
+            android:maxLength="10"
+            android:textColor="#3F51B5"
+            android:hint="NIM"
+            android:textColorHighlight="#000000">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/Vnama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nomor"
+            android:layout_alignLeft="@+id/nomor"
+            android:layout_marginTop="10dp"
+            android:text="Nama"
+            android:textAlignment="viewEnd"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Vnama"
+            android:layout_alignLeft="@+id/Vnama"
+            android:hint="Nama Lengkap"
+            android:inputType="text"
+            android:maxLength="40" />
+
+        <TextView
+            android:id="@+id/vtgl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nama"
+            android:layout_alignLeft="@+id/nama"
+            android:layout_marginTop="10dp"
+            android:text="Tanggal Lahir"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/tgl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vtgl"
+            android:layout_alignLeft="@+id/vtgl"
+            android:hint="Tanggal Bulan Tahun"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/vjenisKelamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tgl"
+            android:layout_alignLeft="@+id/tgl"
+            android:layout_marginTop="10dp"
+            android:text="Jenis Kelamin"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/jenisKelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vjenisKelamin"
+            android:layout_alignLeft="@+id/vjenisKelamin"
+            android:hint="L atau P"
+            android:inputType="text"
+            android:maxLength="1" />
+
+        <TextView
+            android:id="@+id/valamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/jenisKelamin"
+            android:layout_alignLeft="@+id/jenisKelamin"
+            android:layout_marginTop="10dp"
+            android:text="Alamat"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/valamat"
+            android:layout_alignLeft="@+id/valamat"
+            android:hint="Alamat Lengkap"
+            android:inputType="text"
+            android:maxLength="100" />
+
+        <Button
+            android:id="@+id/btn_simpan"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/alamat"
+            android:layout_alignParentBottom="true"
+            android:drawableLeft="@drawable/ic_done"
+            android:text="Simpan"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/btn_kembali"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/alamat"
+            android:layout_alignRight="@+id/alamat"
+            android:layout_alignParentBottom="true"
+            android:drawableLeft="@drawable/ic_arrow"
+            android:text="Kembali"
+            android:textColor="#000000" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

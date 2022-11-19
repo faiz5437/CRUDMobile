@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:background="@drawable/gambar1"
+        tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/arbutus"
+        android:shadowColor="#00ccff"
+        android:textColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:text="BIODATA MAHASISWA"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:layout_width="367dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/logo"
+        android:alpha=".30"/>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:dividerHeight="10.0sp"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        tools:listitem="@layout/list_item"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="70dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/icon_add"
+        android:clickable="true"
+        app:backgroundTint="@color/design_default_color_secondary"
+        app:rippleColor="@color/white"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_hapus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="90dp"
+        android:src="@drawable/hapus"
+        android:clickable="true"
+        app:backgroundTint="@color/design_default_color_secondary"
+        app:rippleColor="@color/white"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</RelativeLayout>
