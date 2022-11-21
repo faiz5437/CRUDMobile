@@ -24,6 +24,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
             android:src="@drawable/logo" />
+        <ImageView
+            android:layout_width="367dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo"
+            android:alpha=".05"/>
         <TextView
             android:id="@+id/tvJudul"
             android:layout_width="match_parent"

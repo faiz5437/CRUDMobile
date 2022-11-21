@@ -16,6 +16,11 @@
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
         tools:context=".UpdateBiodata">
+        <ImageView
+            android:layout_width="367dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo"
+            android:alpha=".05"/>
 
         <ImageView
             android:id="@+id/logo"
