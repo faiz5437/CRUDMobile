@@ -38,13 +38,6 @@ public class CreateBiodata extends AppCompatActivity {
                 startActivity(intentBack);
             }
         });
-
-        radioGrup1 = findViewById(R.id.radio_button);
-
-
-        radioGrup1.clearCheck();
-
-
         database = new SQLHelper(this);
         nomor = findViewById(R.id.nomor);
         nama = findViewById(R.id.nama);

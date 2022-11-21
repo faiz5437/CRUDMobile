@@ -18,12 +18,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerView cvData;
-    String[] daftar, namaShow;
+    public String[] daftar, namaShow;
     int[] idItem;
     ListView ListView01;
     protected Cursor cursor;
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     alertDialogBuilder
                             .setMessage("Klik Ya untuk Hapus!")
                             .setIcon(R.drawable.ic_warning_hapus)
-                            .setCancelable(false)
+                            .setCancelable(true)
                             .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,int id) {
                                     SQLiteDatabase db2 = dbcenter.getWritableDatabase();
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d("data : ", "nama : "+namaShow[0]);
 //        String name = namaShow[0];
 //        ListView01.setAdapter(this, R.layout.list_item, R.id.text_view, daftar));
-        ListView01.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, daftar));
+        ListView01.setAdapter(new ArrayAdapter(this, R.layout.list_item, R.id.text_view, daftar));
 //        ListView01.setAdapter(new ArrayAdapter(this, R.layout.list_item, R.id.tv_id_item, idItem));
 //        cvData.setAdapter(new ArrayAdapter(this, arrNama, arrNim)   );
 
@@ -125,14 +128,17 @@ public class MainActivity extends AppCompatActivity {
 //                }
                 Log.d("data : ", "nama : "+arg2);
                 int[] id_item = new int[cursor.getCount()];
+                daftar = new String[cursor.getCount()];
                 cursor.moveToFirst();
                 for(int x = 0; x < cursor.getCount(); x++){
                     cursor.moveToPosition(x); // urutan row atau baris ke x dari record database
                     id_item[x] = cursor.getInt(0); // urutan nama kolom ke 0 dari database = id
+                    daftar[x] = cursor.getString(2);
                 }
                 // disini id item sudah menjadi array dengan length ssuai listview dan sama dengan nama kolom ke 0 dari database
                 //.getItemAtPosition(arg2).toString();
                 String selection = String.valueOf(id_item[arg2]);
+                String selectNama = daftar[arg2];
                 Log.d("data", "nama "+id_item);
                 Log.d("test", "selection "+selection);
                 final CharSequence[] dialogitem = {"Lihat Biodata", "Update Biodata", "Hapus Biodata"};
@@ -155,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(in);
                                 break;
                             case 2 :
-                                showDialog(selection);
+                                showDialog(selection, selectNama);
                                 break;
                         }
                     }
@@ -165,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         //noinspection rawtypes
         ((ArrayAdapter)ListView01.getAdapter()).notifyDataSetInvalidated();
     }
-    private void showDialog(String selection){
+    private void showDialog(String selection, String selectNama){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
 
@@ -174,9 +180,9 @@ public class MainActivity extends AppCompatActivity {
 
         // set pesan dari dialog
         alertDialogBuilder
-                .setMessage("Klik Ya untuk Hapus!")
+                .setMessage("Klik Ya untuk Hapus " + selectNama)
                 .setIcon(R.drawable.ic_warning_hapus)
-                .setCancelable(false)
+                .setCancelable(true)
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
                         // jika tombol diklik, maka akan menutup activity ini

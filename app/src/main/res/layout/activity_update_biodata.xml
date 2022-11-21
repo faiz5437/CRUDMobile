@@ -9,6 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/gambar1"
+        android:backgroundTintMode="add"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
@@ -16,58 +18,78 @@
         tools:context=".UpdateBiodata">
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="376dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/logo"
-            android:alpha=".30"/>
-        <TextView
-            android:id="@+id/judul"
-            android:layout_width="wrap_content"
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Data"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="40dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            />
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/logo" />
+        <TextView
+            android:id="@+id/tvJudul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_bold"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="UPDATE BIODATA"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Vnomor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="150dp"
+            android:text="NIM"
+            android:textColor="#000000"
+            android:textColorHighlight="#3F51B5"
+            android:textColorLink="#2196F3" />
 
         <EditText
             android:id="@+id/nim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/vnim"
-            android:layout_alignLeft="@+id/vnim"
+            android:layout_below="@+id/Vnomor"
+            android:layout_alignLeft="@+id/Vnomor"
             android:inputType="number"
-            android:maxLength="10">
+            android:maxLength="10"
+            android:textColor="@color/black"
+            android:hint="NIM"
+            android:textColorHint="#575757"
+            android:textColorHighlight="#000000">
 
             <requestFocus />
         </EditText>
 
         <TextView
-            android:id="@+id/vnim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="100dp"
-            android:text="NIM" />
-
-        <TextView
-            android:id="@+id/vnama"
+            android:id="@+id/Vnama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nim"
             android:layout_alignLeft="@+id/nim"
             android:layout_marginTop="10dp"
-            android:text="Nama" />
+            android:text="Nama"
+            android:textColorHint="#575757"
+            android:textAlignment="viewEnd"
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/vnama"
-            android:layout_alignLeft="@+id/vnama"
+            android:layout_below="@+id/Vnama"
+            android:layout_alignLeft="@+id/Vnama"
+            android:hint="Nama Lengkap"
+            android:textColorHint="#575757"
+            android:textColor="@color/black"
             android:inputType="text"
             android:maxLength="40" />
 
@@ -78,14 +100,18 @@
             android:layout_below="@+id/nama"
             android:layout_alignLeft="@+id/nama"
             android:layout_marginTop="10dp"
-            android:text="Tanggal Lahir" />
+            android:text="Tanggal Lahir"
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/tgl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/vtgl"
+            android:textColorHint="#575757"
+            android:textColor="@color/black"
             android:layout_alignLeft="@+id/vtgl"
+            android:hint="Tanggal Bulan Tahun"
             android:inputType="date" />
 
         <TextView
@@ -95,58 +121,86 @@
             android:layout_below="@+id/tgl"
             android:layout_alignLeft="@+id/tgl"
             android:layout_marginTop="10dp"
-            android:text="Jenis Kelamin" />
+            android:text="Jenis Kelamin"
+            android:textColor="#000000" />
 
-        <EditText
-            android:id="@+id/jenisKelamin"
+        <!--        <EditText-->
+        <!--            android:id="@+id/jenisKelamin"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@+id/vjenisKelamin"-->
+        <!--            android:layout_alignLeft="@+id/vjenisKelamin"-->
+        <!--            android:hint="L atau P"-->
+        <!--            android:inputType="text"-->
+        <!--            android:maxLength="1" />-->
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/radio_button"
+            android:layout_below="@+id/vjenisKelamin"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/vjenisKelamin"
+            android:layout_alignParentLeft="true"
             android:layout_alignLeft="@+id/vjenisKelamin"
-            android:hint="L atau P"
-            android:inputType="text"
-            android:maxLength="1" />
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radio_laki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:text="Laki - Laki"
+                android:shadowColor="@color/blue"/>
+            <RadioButton android:id="@+id/radio_cewe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/pink"
+                android:text="Perempuan"/>
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/valamat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/jenisKelamin"
-            android:layout_alignLeft="@+id/jenisKelamin"
+            android:layout_below="@+id/radio_button"
             android:layout_marginTop="10dp"
-            android:inputType="text"
-            android:maxLength="100"
-            android:text="Alamat" />
+            android:layout_marginLeft="14dp"
+            android:text="Alamat"
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/alamat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/valamat"
-            android:layout_alignLeft="@+id/valamat" />
+            android:layout_alignLeft="@+id/valamat"
+            android:textColorHint="#575757"
+            android:textColor="@color/black"
+            android:hint="Alamat Lengkap"
+            android:inputType="text"
+            android:maxLength="100" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btn_update"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/alamat"
-            android:layout_alignParentBottom="true"
-            android:drawableLeft="@drawable/ic_done"
-            android:text="Update" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_kembali"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/alamat"
             android:layout_alignRight="@+id/alamat"
             android:layout_alignParentBottom="true"
+            android:drawableLeft="@drawable/ic_done"
+            android:text="Simpan"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/btn_kembali"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/alamat"
+            android:layout_alignParentBottom="true"
             android:drawableLeft="@drawable/ic_arrow"
-            android:text="Kembali" />
+            android:text="Kembali"
+            android:textColor="#000000" />
 
     </RelativeLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
