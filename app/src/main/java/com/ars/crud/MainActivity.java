@@ -5,8 +5,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView cvData;
@@ -55,9 +53,35 @@ public class MainActivity extends AppCompatActivity {
         fab_hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SQLiteDatabase db2 = dbcenter.getWritableDatabase();
-                db2.execSQL("delete from biodata");
-                RefreshList();
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+
+                    // set title dialog
+                    alertDialogBuilder.setTitle("Yakin Ingin HAPUS SEMUA DATA?");
+
+                    // set pesan dari dialog
+                    alertDialogBuilder
+                            .setMessage("Klik Ya untuk Hapus!")
+                            .setIcon(R.drawable.ic_warning_hapus)
+                            .setCancelable(false)
+                            .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,int id) {
+                                    SQLiteDatabase db2 = dbcenter.getWritableDatabase();
+                                    db2.execSQL("delete from biodata");
+                                    RefreshList();
+                                }
+                            })
+                            .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // jika tombol ini diklik, akan menutup dialog
+                                    // dan tidak terjadi apa2
+                                    dialog.cancel();
+                                }
+                            });
+                    // membuat alert dialog dari builder
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // menampilkan alert dialog
+                    alertDialog.show();
             }
         });
         ma = this;
@@ -111,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 String selection = String.valueOf(id_item[arg2]);
                 Log.d("data", "nama "+id_item);
                 Log.d("test", "selection "+selection);
-                final CharSequence[] dialogitem = {"Lihat Biodata", "Update Biodata", "Hapus Biodata", "Hapus Semua Data"};
+                final CharSequence[] dialogitem = {"Lihat Biodata", "Update Biodata", "Hapus Biodata"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setCancelable(true);
                 builder.setTitle("Pilihan");
@@ -131,15 +155,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(in);
                                 break;
                             case 2 :
-                                SQLiteDatabase db = dbcenter.getWritableDatabase();
-
-                                db.execSQL("delete from biodata where id = '"+selection+"'");
-                                RefreshList();
-                                break;
-                            case 3 :
-                                SQLiteDatabase db2 = dbcenter.getWritableDatabase();
-                                db2.execSQL("delete from biodata");
-                                RefreshList();
+                                showDialog(selection);
                                 break;
                         }
                     }
@@ -148,6 +164,39 @@ public class MainActivity extends AppCompatActivity {
             }});
         //noinspection rawtypes
         ((ArrayAdapter)ListView01.getAdapter()).notifyDataSetInvalidated();
+    }
+    private void showDialog(String selection){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Yakin Ingin Menghapus?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Klik Ya untuk Hapus!")
+                .setIcon(R.drawable.ic_warning_hapus)
+                .setCancelable(false)
+                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        SQLiteDatabase db = dbcenter.getWritableDatabase();
+                        db.execSQL("delete from biodata where id = '"+selection+"'");
+                        RefreshList();
+                    }
+                })
+                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 
 }

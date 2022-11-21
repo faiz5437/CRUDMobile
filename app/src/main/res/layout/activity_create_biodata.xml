@@ -90,7 +90,7 @@
             android:layout_below="@+id/vtgl"
             android:layout_alignLeft="@+id/vtgl"
             android:hint="Tanggal Bulan Tahun"
-            android:inputType="text" />
+            android:inputType="date" />
 
         <TextView
             android:id="@+id/vjenisKelamin"
@@ -102,23 +102,45 @@
             android:text="Jenis Kelamin"
             android:textColor="#000000" />
 
-        <EditText
-            android:id="@+id/jenisKelamin"
+<!--        <EditText-->
+<!--            android:id="@+id/jenisKelamin"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/vjenisKelamin"-->
+<!--            android:layout_alignLeft="@+id/vjenisKelamin"-->
+<!--            android:hint="L atau P"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLength="1" />-->
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/radio_button"
+            android:layout_below="@+id/vjenisKelamin"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/vjenisKelamin"
+            android:layout_alignParentLeft="true"
             android:layout_alignLeft="@+id/vjenisKelamin"
-            android:hint="L atau P"
-            android:inputType="text"
-            android:maxLength="1" />
+            android:orientation="horizontal">
+                <RadioButton android:id="@+id/radio_laki"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:text="Laki - Laki"
+                    android:shadowColor="@color/blue"/>
+                <RadioButton android:id="@+id/radio_cewe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pink"
+                    android:text="Perempuan"/>
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/valamat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/jenisKelamin"
-            android:layout_alignLeft="@+id/jenisKelamin"
+            android:layout_below="@+id/radio_button"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="14dp"
             android:text="Alamat"
             android:textColor="#000000" />
 
