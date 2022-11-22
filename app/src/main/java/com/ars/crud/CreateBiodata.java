@@ -44,31 +44,36 @@ public class CreateBiodata extends AppCompatActivity {
         tgl = findViewById(R.id.tgl);
         alamat = findViewById(R.id.alamat);
         btn_simpan = findViewById(R.id.btn_simpan);
+        radioGrup1 = findViewById(R.id.radio_button);
         rdLaki = findViewById(R.id.radio_laki);
         rdCewe = findViewById(R.id.radio_cewe);
 
 
 //        nama.setText("coba");
-        String getNomor = nomor.getText().toString();
-        String getNama = nama.getText().toString();
-        String getTgl = tgl.getText().toString();
-        String getAlamat = alamat.getText().toString();
 
 
         btn_simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (getNomor.trim().equals("")){
-//                    nomor.setError("NIM Tidak Boleh Kosong");
-//                }else if (getNama.trim().equals("")){
-//                    nama.setError("Nama Tidak Boleh Kosong");
-//                }else if (getTgl.trim().equals("")){
-//                    tgl.setError("Nama Tidak Boleh Kosong");
-//                }else if (getAlamat.trim().equals("")){
-//                    alamat.setError("Nama Tidak Boleh Kosong");
-//                }else if (getAlamat.trim().equals("")){
-//                    alamat.setError("Nama Tidak Boleh Kosong");
-//                }else{
+                String getNomor = nomor.getText().toString();
+                String getNama = nama.getText().toString();
+                String getTgl = tgl.getText().toString();
+                String getAlamat = alamat.getText().toString();
+
+                if (getNomor.trim().equals("")){
+                    nomor.setError("NIM Tidak Boleh Kosong");
+                }else if (getNama.trim().equals("")){
+                    nama.setError("Nama Tidak Boleh Kosong");
+                }else if (getTgl.trim().equals("")){
+                    tgl.setError("Nama Tidak Boleh Kosong");
+                }else if (getAlamat.trim().equals("")){
+                    alamat.setError("Nama Tidak Boleh Kosong");
+                }else if (getAlamat.trim().equals("")){
+                    alamat.setError("Nama Tidak Boleh Kosong");
+                }else if (radioGrup1.getCheckedRadioButtonId() == -1) {
+                    Log.d("radio", String.valueOf(radioGrup1.getCheckedRadioButtonId()));
+                    Toast.makeText(CreateBiodata.this, "Pilih Jenis Kelamin", Toast.LENGTH_SHORT).show();
+                }else {
                     String jk = "";
                 if (rdLaki.isChecked()){
                     jk+= "Laki - Laki";
@@ -95,7 +100,7 @@ public class CreateBiodata extends AppCompatActivity {
                 finish();
                 }
 //            }
-        });
+        }});
 
 
 
