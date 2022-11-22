@@ -85,16 +85,36 @@ public class UpdateBiodata extends AppCompatActivity {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String jk = "";
-                if (rdLaki.isChecked()){
-                    jk+= "Laki - Laki";
-                }
-                if (rdCewe.isChecked()){
-                    jk+= "Perempuan";
-                }
-                Log.d("nama", "cekNama1 : "+getNIM);
+                String getNomor = nim.getText().toString();
+                String getNama = xNama.getText().toString();
+                String getTgl = tgl.getText().toString();
+                String getAlamat = alamat.getText().toString();
+                radioGrup1 =findViewById(R.id.radio_button);
 
-                SQLiteDatabase db = database.getWritableDatabase();
+                if (getNomor.trim().equals("")) {
+                    nim.setError("NIM Tidak Boleh Kosong");
+                } else if (getNama.trim().equals("")) {
+                    xNama.setError("Nama Tidak Boleh Kosong");
+                } else if (getTgl.trim().equals("")) {
+                    tgl.setError("Nama Tidak Boleh Kosong");
+                } else if (getAlamat.trim().equals("")) {
+                    alamat.setError("Nama Tidak Boleh Kosong");
+                } else if (getAlamat.trim().equals("")) {
+                    alamat.setError("Nama Tidak Boleh Kosong");
+                } else if (radioGrup1.getCheckedRadioButtonId() == -1) {
+                    Log.d("radio", String.valueOf(radioGrup1.getCheckedRadioButtonId()));
+                    Toast.makeText(UpdateBiodata.this, "Pilih Jenis Kelamin", Toast.LENGTH_SHORT).show();
+                } else {
+                    String jk = "";
+                    if (rdLaki.isChecked()) {
+                        jk += "Laki - Laki";
+                    }
+                    if (rdCewe.isChecked()) {
+                        jk += "Perempuan";
+                    }
+                    Log.d("nama", "cekNama1 : " + getNIM);
+
+                    SQLiteDatabase db = database.getWritableDatabase();
 //                db.execSQL("UPDATE biodata SET nim = '" +
 //                        nim.getText().toString()+"', nama = '" +
 //                        xNama.getText().toString()+"', tgl = '" +
@@ -102,18 +122,19 @@ public class UpdateBiodata extends AppCompatActivity {
 //                        jenisKelamin.getText().toString()+"', '" +
 //                        alamat.getText().toString()+"' WHERE id = '" +
 //                        getNIM.toString()+"'");
-                db.execSQL("UPDATE biodata SET nim = '" +
-                        nim.getText().toString()+"', nama = '" +
-                        xNama.getText().toString()+"', tgl = '" +
-                        tgl.getText().toString()+"', jk = '" +
-                        jk+"', alamat = '" +
-                        alamat.getText().toString()+"' WHERE id = '" +
-                        getIntent().getStringExtra("id")+"'");
-                Log.d("data", "peasn : "+xNama.getText().toString());
+                    db.execSQL("UPDATE biodata SET nim = '" +
+                            nim.getText().toString() + "', nama = '" +
+                            xNama.getText().toString() + "', tgl = '" +
+                            tgl.getText().toString() + "', jk = '" +
+                            jk + "', alamat = '" +
+                            alamat.getText().toString() + "' WHERE id = '" +
+                            getIntent().getStringExtra("id") + "'");
+                    Log.d("data", "peasn : " + xNama.getText().toString());
 //                Log.d("data", "peasn : "+xNama.getText().toString());
-                Toast.makeText(UpdateBiodata.this, "Data Berhasil Di Update", Toast.LENGTH_SHORT).show();
-                MainActivity.ma.RefreshList();
-                finish();
+                    Toast.makeText(UpdateBiodata.this, "Data Berhasil Di Update", Toast.LENGTH_SHORT).show();
+                    MainActivity.ma.RefreshList();
+                    finish();
+                }
             }
         });
     }
