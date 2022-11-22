@@ -150,13 +150,11 @@
             <RadioButton android:id="@+id/radio_laki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
                 android:text="Laki - Laki"
                 android:shadowColor="@color/blue"/>
             <RadioButton android:id="@+id/radio_cewe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/pink"
                 android:text="Perempuan"/>
 
         </RadioGroup>

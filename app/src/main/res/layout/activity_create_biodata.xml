@@ -116,8 +116,7 @@
             android:textColorHint="#575757"
             android:textColor="@color/black"
             android:layout_alignLeft="@+id/vtgl"
-            android:hint="Tanggal Bulan Tahun"
-            android:inputType="date" />
+            android:hint="Tanggal Bulan Tahun" />
 
         <TextView
             android:id="@+id/vjenisKelamin"
@@ -150,13 +149,11 @@
                 <RadioButton android:id="@+id/radio_laki"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/blue"
                     android:text="Laki - Laki"
                     android:shadowColor="@color/blue"/>
                 <RadioButton android:id="@+id/radio_cewe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/pink"
                     android:text="Perempuan"/>
 
         </RadioGroup>
@@ -179,7 +176,7 @@
             android:layout_alignLeft="@+id/valamat"
             android:textColorHint="#575757"
             android:textColor="@color/black"
-            android:hint="Alamat Lengkap"
+            android:hint="Alamat"
             android:inputType="text"
             android:maxLength="100" />
 

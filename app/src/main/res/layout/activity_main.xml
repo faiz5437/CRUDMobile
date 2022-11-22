@@ -43,7 +43,8 @@
 
     <ListView
         android:id="@+id/listView1"
-        android:dividerHeight="10.0sp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
         android:layout_below="@+id/tvJudul"
         android:layout_width="match_parent"
         android:layout_height="500dp"

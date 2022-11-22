@@ -11,6 +11,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -59,14 +60,17 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
 
                     // set title dialog
-                    alertDialogBuilder.setTitle("Yakin Ingin HAPUS SEMUA DATA?");
+                    alertDialogBuilder.setTitle(Html.fromHtml("<font color = '#FF0000'><strong>Yakin Ingin HAPUS SEMUA DATA ? </strong></font>"));
+
 
                     // set pesan dari dialog
                     alertDialogBuilder
-                            .setMessage("Klik Ya untuk Hapus!")
+                            .setMessage(Html.fromHtml("<font color = '#FF0000'>Klik Ya Untuk <strong>Hapus Semua Data</strong></font>"))
                             .setIcon(R.drawable.ic_warning_hapus)
                             .setCancelable(true)
+
                             .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+
                                 public void onClick(DialogInterface dialog,int id) {
                                     SQLiteDatabase db2 = dbcenter.getWritableDatabase();
                                     db2.execSQL("delete from biodata");
@@ -180,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
         // set pesan dari dialog
         alertDialogBuilder
-                .setMessage("Klik Ya untuk Hapus " + selectNama)
+                .setMessage( Html.fromHtml("Klik Ya Untuk Hapus <font color = '#FF0000'><strong>"+ selectNama+"</strong></font>") )
                 .setIcon(R.drawable.ic_warning_hapus)
                 .setCancelable(true)
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
