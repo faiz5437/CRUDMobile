@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     daftar[x] = cursor.getString(2);
                 }
                 // disini id item sudah menjadi array dengan length ssuai listview dan sama dengan nama kolom ke 0 dari database
-                //.getItemAtPosition(arg2).toString();
+//                .getItemAtPosition(arg2).toString();
                 String selection = String.valueOf(id_item[arg2]);
                 String selectNama = daftar[arg2];
                 Log.d("data", "nama "+id_item);
